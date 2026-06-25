@@ -7,6 +7,13 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.4] — 2026-06-25
+
+### Corrigido
+- 🌐 **Tela em branco após deploy**: Adicionado servidor estático de produção (`sirv`) às dependências e configurado script `"start"` no `package.json` juntamente com instrução de inicialização explícita no `nixpacks.toml`, corrigindo a falha onde o servidor de produção não sabia como servir os arquivos da pasta `dist/`.
+
+---
+
 ## [1.0.3] — 2026-06-25
 
 ### Adicionado

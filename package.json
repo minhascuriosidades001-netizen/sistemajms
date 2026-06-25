@@ -7,6 +7,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "start": "sirv dist --port 3000 --host 0.0.0.0 --single",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
@@ -15,7 +16,8 @@
   "dependencies": {
     "lucide-react": "^1.21.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "sirv": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",

@@ -1,3 +1,6 @@
 # Custom Nixpacks configuration to prevent build cache errors
 [phases.build]
 cmds = ["npm run build"]
+
+[start]
+cmd = "npm run start"
