@@ -592,21 +592,21 @@ export default function App() {
           </div>
         )}
 
-        {/* WORKSPACE SIDE-BY-SIDE: EDITING/CREATING RECIBO */}
+        {/* WORKSPACE: EDITING/CREATING RECIBO */}
         {activeView === 'receipt' && activeReceipt && (
-          <div className="flex-1 flex flex-col lg:flex-row h-full">
-            {/* Esquerdo: Formulário */}
-            <div className="flex-1 p-6 max-w-4xl w-full lg:max-h-[calc(100vh-10px)] lg:overflow-y-auto no-print space-y-4">
+          <div className="flex-1 flex flex-col h-full">
+            {/* Formulário */}
+            <div className="flex-1 p-6 max-w-4xl w-full no-print space-y-4">
               {/* Menu Superior de Ações */}
-              <div className="flex items-center justify-between bg-slate-900 text-white px-5 py-3 rounded-xl shadow-md">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-900 text-white p-3 sm:px-5 sm:py-3 rounded-xl shadow-md gap-3">
                 <button
                   onClick={() => setActiveView('history')}
-                  className="flex items-center gap-1.5 text-xs text-slate-350 hover:text-white font-bold transition-colors"
+                  className="bg-transparent flex items-center gap-1.5 text-xs text-slate-300 hover:text-white font-bold transition-colors w-fit"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Voltar
                 </button>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <button
                     onClick={clearReceiptFields}
                     className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-lg transition-all"
@@ -637,13 +637,6 @@ export default function App() {
               <ReceiptForm data={activeReceipt} onChange={setActiveReceipt} />
             </div>
 
-            {/* Direito: Pré-visualização A4 */}
-            <div className="w-full lg:w-[480px] xl:w-[620px] bg-slate-200 p-6 flex justify-center lg:max-h-[calc(100vh-10px)] lg:overflow-y-auto shadow-inner no-print border-l border-slate-300">
-              <div className="scale-75 md:scale-90 lg:scale-[0.68] xl:scale-[0.82] 2xl:scale-100 origin-top shadow-xl">
-                <ReceiptPreview data={activeReceipt} />
-              </div>
-            </div>
-
             {/* Apenas para Impressora Física/PDF */}
             <div className="hidden print:block print-preview-holder">
               <ReceiptPreview data={activeReceipt} />
@@ -651,21 +644,21 @@ export default function App() {
           </div>
         )}
 
-        {/* WORKSPACE SIDE-BY-SIDE: EDITING/CREATING RELATÓRIO */}
+        {/* WORKSPACE: EDITING/CREATING RELATÓRIO */}
         {activeView === 'report' && activeReport && (
-          <div className="flex-1 flex flex-col lg:flex-row h-full">
-            {/* Esquerdo: Formulário */}
-            <div className="flex-1 p-6 max-w-4xl w-full lg:max-h-[calc(100vh-10px)] lg:overflow-y-auto no-print space-y-4">
+          <div className="flex-1 flex flex-col h-full">
+            {/* Formulário */}
+            <div className="flex-1 p-6 max-w-4xl w-full no-print space-y-4">
               {/* Menu Superior de Ações */}
-              <div className="flex items-center justify-between bg-slate-900 text-white px-5 py-3 rounded-xl shadow-md">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-900 text-white p-3 sm:px-5 sm:py-3 rounded-xl shadow-md gap-3">
                 <button
                   onClick={() => setActiveView('history')}
-                  className="flex items-center gap-1.5 text-xs text-slate-350 hover:text-white font-bold transition-colors"
+                  className="bg-transparent flex items-center gap-1.5 text-xs text-slate-300 hover:text-white font-bold transition-colors w-fit"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Voltar
                 </button>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <button
                     onClick={clearReportFields}
                     className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold px-3 py-2 rounded-lg transition-all"
@@ -694,13 +687,6 @@ export default function App() {
 
               {/* Report Form */}
               <ReportForm data={activeReport} onChange={setActiveReport} />
-            </div>
-
-            {/* Direito: Pré-visualização A4 */}
-            <div className="w-full lg:w-[480px] xl:w-[620px] bg-slate-200 p-6 flex justify-center lg:max-h-[calc(100vh-10px)] lg:overflow-y-auto shadow-inner no-print border-l border-slate-300">
-              <div className="scale-75 md:scale-90 lg:scale-[0.68] xl:scale-[0.82] 2xl:scale-100 origin-top shadow-xl">
-                <ReportPreview data={activeReport} />
-              </div>
             </div>
 
             {/* Apenas para Impressora Física/PDF */}

@@ -7,6 +7,17 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.3] — 2026-06-25
+
+### Adicionado
+- 🖥️ **Simplificação da Edição**: Removido o painel lateral de pré-visualização A4 das telas de edição de recibos e relatórios, focando totalmente no preenchimento do formulário.
+
+### Corrigido
+- 🎨 **Estilo de Botões**: Adicionado suporte para as classes `bg-transparent` e `bg-slate-800` no arquivo `index.css`, corrigindo botões que assumiam a cor branca nativa dos navegadores.
+- 📱 **Barra de Ações Responsiva**: Ajustado o posicionamento e o alinhamento dos botões (Voltar, Limpar, Salvar, Imprimir) para que se adaptem e quebrem de linha perfeitamente no celular, sem espremer ou cortar o texto.
+
+---
+
 ## [1.0.2] — 2026-06-25
 
 ### Adicionado
