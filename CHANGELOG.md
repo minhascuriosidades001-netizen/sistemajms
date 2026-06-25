@@ -7,6 +7,13 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.6] — 2026-06-25
+
+### Corrigido
+- 🐳 **Deploy Estável com Dockerfile**: Substituído o Nixpacks/sirv por um `Dockerfile` de duas etapas (build com Node 20 + serve com Nginx), resolvendo definitivamente os erros `sirv: not found` e garantindo que o app seja servido de forma confiável em qualquer ambiente Docker.
+
+---
+
 ## [1.0.5] — 2026-06-25
 
 ### Corrigido

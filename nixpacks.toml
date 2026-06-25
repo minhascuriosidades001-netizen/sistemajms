@@ -1,6 +1,2 @@
-# Custom Nixpacks configuration to prevent build cache errors
-[phases.build]
-cmds = ["npm run build"]
-
-[start]
-cmd = "npm run start"
+# Custom Nixpacks configuration — desativado pois usamos Dockerfile
+# O Dockerfile controla todo o processo de build e start.
