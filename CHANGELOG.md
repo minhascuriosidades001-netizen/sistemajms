@@ -7,6 +7,13 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.1] — 2026-06-25
+
+### Corrigido
+- 🔧 **Deploy no Easypanel**: Adicionado arquivo `nixpacks.toml` para contornar problemas de permissão com cache do build do node_modules e configurada a versão mínima do Node.js no `package.json` para `>=20.0.0`.
+
+---
+
 ## [1.0.0] — 2026-06-25
 
 ### Adicionado
