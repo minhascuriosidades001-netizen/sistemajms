@@ -24,7 +24,9 @@ import {
   ArrowLeft,
   RefreshCw,
   Home,
-  CheckCircle2
+  CheckCircle2,
+  Menu,
+  X
 } from 'lucide-react';
 
 interface CompanySettings {
@@ -56,6 +58,7 @@ const DEFAULT_SETTINGS: CompanySettings = {
 export default function App() {
   // Navigation & view states
   const [activeView, setActiveView] = useState<'history' | 'receipt' | 'report' | 'settings'>('history');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Storage for records
   const [records, setRecords] = useLocalStorage<DocumentRecord[]>('jms_records', [
@@ -362,97 +365,122 @@ export default function App() {
       )}
 
       {/* SIDEBAR NAVIGATION (NO-PRINT) */}
-      <aside className="w-full md:w-64 bg-slate-900 text-white shrink-0 shadow-xl border-r border-slate-950 no-print flex flex-col">
+      <aside className="w-full md:w-64 bg-slate-900 text-white shrink-0 shadow-xl border-b md:border-b-0 md:border-r border-slate-950 no-print flex flex-col">
         {/* Brand */}
-        <div className="p-6 border-b border-slate-800 flex items-center gap-3">
-          <div className="flex items-center justify-center">
-            <Logo size={48} light />
+        <div className="p-4 md:p-6 border-b border-slate-800 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center">
+              <Logo size={40} light />
+            </div>
+            <div className="text-left">
+              <h1 className="font-extrabold text-sm leading-none tracking-wide text-slate-100">JMS REFRIGERAÇÃO</h1>
+              <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase block mt-1">Painel Emissor</span>
+            </div>
           </div>
-          <div className="text-left">
-            <h1 className="font-extrabold text-sm leading-none tracking-wide text-slate-100">JMS REFRIGERAÇÃO</h1>
-            <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase block mt-1">Painel Emissor</span>
-          </div>
+          
+          {/* Botão de Menu para Mobile */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none transition-colors"
+            aria-label="Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
         {/* Menu Items */}
-        <nav className="flex-1 p-4 space-y-1.5">
-          <button
-            onClick={() => setActiveView('history')}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
-              activeView === 'history'
-                ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <History className="w-4 h-4" />
-              <span>Histórico de Registros</span>
-            </div>
-            <ChevronRight className={`w-3.5 h-3.5 transition-transform ${activeView === 'history' ? 'rotate-90 text-white/50' : 'text-slate-600'}`} />
-          </button>
+        <div className={`${isMobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col flex-1`}>
+          <nav className="flex-1 p-4 space-y-1.5">
+            <button
+              onClick={() => {
+                setActiveView('history');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
+                activeView === 'history'
+                  ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <History className="w-4 h-4" />
+                <span>Histórico de Registros</span>
+              </div>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform ${activeView === 'history' ? 'rotate-90 text-white/50' : 'text-slate-600'}`} />
+            </button>
 
-          <div className="pt-4 pb-2 px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-            Emissão rápida
+            <div className="pt-4 pb-2 px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Emissão rápida
+            </div>
+
+            <button
+              onClick={() => {
+                initNewReceipt();
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
+                activeView === 'receipt' && !activeReceipt?.id.startsWith('saved')
+                  ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <FileText className="w-4 h-4" />
+                <span>Criar Novo Recibo</span>
+              </div>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+            </button>
+
+            <button
+              onClick={() => {
+                initNewReport();
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
+                activeView === 'report' && !activeReport?.id.startsWith('saved')
+                  ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <Wrench className="w-4 h-4" />
+                <span>Criar Novo Relatório</span>
+              </div>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+            </button>
+
+            <div className="pt-4 pb-2 px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+              Ajustes do Painel
+            </div>
+
+            <button
+              onClick={() => {
+                setActiveView('settings');
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
+                activeView === 'settings'
+                  ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <SettingsIcon className="w-4 h-4" />
+                <span>Dados da Empresa</span>
+              </div>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+            </button>
+          </nav>
+
+          {/* Footer */}
+          <div className="p-4 border-t border-slate-800 bg-slate-950 text-slate-500 text-[10px] font-medium text-center">
+            V1.0 - TypeScript / React
           </div>
-
-          <button
-            onClick={initNewReceipt}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
-              activeView === 'receipt' && !activeReceipt?.id.startsWith('saved')
-                ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <FileText className="w-4 h-4" />
-              <span>Criar Novo Recibo</span>
-            </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          </button>
-
-          <button
-            onClick={initNewReport}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
-              activeView === 'report' && !activeReport?.id.startsWith('saved')
-                ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <Wrench className="w-4 h-4" />
-              <span>Criar Novo Relatório</span>
-            </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          </button>
-
-          <div className="pt-4 pb-2 px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-            Ajustes do Painel
-          </div>
-
-          <button
-            onClick={() => setActiveView('settings')}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold tracking-wide transition-all ${
-              activeView === 'settings'
-                ? 'bg-sky-600 text-white shadow-md shadow-sky-500/10'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <SettingsIcon className="w-4 h-4" />
-              <span>Dados da Empresa</span>
-            </div>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          </button>
-        </nav>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950 text-slate-500 text-[10px] font-medium text-center">
-          V1.0 - TypeScript / React
         </div>
       </aside>
 
       {/* MAIN CONTAINER */}
-      <main className="flex-1 flex flex-col min-w-0 max-h-screen overflow-y-auto">
+      <main className="flex-1 flex flex-col min-w-0 md:max-h-screen md:overflow-y-auto">
         
         {/* VIEW: HISTÓRICO */}
         {activeView === 'history' && (

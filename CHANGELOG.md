@@ -7,6 +7,14 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.2] — 2026-06-25
+
+### Adicionado
+- 📱 **Menu Mobile Sanduíche**: Implementação de menu colapsável (toggle) para telas móveis, deixando a interface mais clean e organizada.
+- 📜 **Rolagem de Página Mobile**: Correção do scroll do body e contêineres principais no celular, permitindo subir e descer a página naturalmente.
+
+---
+
 ## [1.0.1] — 2026-06-25
 
 ### Corrigido
