@@ -7,6 +7,14 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 
 ---
 
+## [1.0.5] — 2026-06-25
+
+### Corrigido
+- 🌐 **sirv: not found**: Adicionado o pacote `sirv-cli` explicitamente às dependências do projeto para garantir a presença do binário global do servidor estático no contêiner de produção.
+- 🔧 **Mapeamento de Skills**: Criado o arquivo `.agents/skills.json` apontando para `.agent/skills` para que o assistente carregue corretamente as habilidades integradas do repositório.
+
+---
+
 ## [1.0.4] — 2026-06-25
 
 ### Corrigido
