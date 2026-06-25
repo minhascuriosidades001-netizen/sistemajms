@@ -1,0 +1,598 @@
+/* =====================================================
+   ESTILOS GLOBAIS E VARIÁVEIS (DESIGN SYSTEM)
+   ===================================================== */
+:root {
+  --azul: #123d6a;
+  --azul-claro: #dcecf8;
+  --linha: #6b7785;
+  --texto: #17212b;
+  --bg-app: #f1f5f9;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --sky-600: #0284c7;
+  --sky-700: #0369a1;
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --emerald-650: #059669;
+  --emerald-700: #047857;
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --rose-500: #ef4444;
+  --rose-600: #dc2626;
+  --rose-50: #fef2f2;
+  --rose-100: #fee2e2;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--texto);
+  overflow: hidden;
+}
+
+/* =====================================================
+   UTILITÁRIOS CSS (EMULANDO CLASSES DE ESTRUTURA)
+   ===================================================== */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.flex-grow { flex-grow: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+.shrink-0 { flex-shrink: 0; }
+.space-y-1\.5 > * + * { margin-top: 0.375rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-5 > * + * { margin-top: 1.25rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.gap-1 { gap: 0.25rem; }
+.gap-1\.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-2\.5 { gap: 0.625rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.align-middle { vertical-align: middle; }
+.align-top { vertical-align: top; }
+.hidden { display: none; }
+.inline-block { display: inline-block; }
+.min-w-\[60px\] { min-width: 60px; }
+.min-w-\[80px\] { min-width: 80px; }
+.min-w-\[90px\] { min-width: 90px; }
+.min-w-\[200px\] { min-width: 200px; }
+.italic { font-style: italic; }
+
+@media (min-width: 768px) {
+  .md\:flex-row { flex-direction: row; }
+  .md\:items-center { align-items: center; }
+  .md\:justify-end { justify-content: flex-end; }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .md\:col-span-2 { grid-column: span 2 / span 2; }
+  .md\:col-span-3 { grid-column: span 3 / span 3; }
+  .md\:col-span-4 { grid-column: span 4 / span 4; }
+  .md\:col-span-6 { grid-column: span 6 / span 6; }
+  .md\:w-64 { width: 16rem; }
+  .md\:scale-90 { transform: scale(0.9); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex-row { flex-direction: row; }
+  .lg\:max-h-\[calc\(100vh-10px\)\] { max-height: calc(100vh - 10px); }
+  .lg\:overflow-y-auto { overflow-y: auto; }
+  .lg\:w-\[480px\] { width: 480px; }
+  .lg\:scale-\[0\.68\] { transform: scale(0.68); }
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-\[620px\] { width: 620px; }
+  .xl\:scale-\[0\.82\] { transform: scale(0.82); }
+}
+
+@media (min-width: 1536px) {
+  .\32 xl\:scale-100 { transform: scale(1); }
+}
+
+/* Espaçamentos e paddings */
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-2\.5 { padding: 0.625rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.pt-1 { padding-top: 0.25rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-4 { padding-top: 1rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-3 { padding-bottom: 0.75rem; }
+.mt-0\.5 { margin-top: 0.125rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-1\.5 { margin-top: 0.375rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-12 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.ml-auto { margin-left: auto; }
+
+/* Bordas, Sombras e Fontes */
+.border-b { border-bottom: 1px solid var(--slate-200); }
+.border-t { border-top: 1px solid var(--slate-200); }
+.border-r { border-right: 1px solid var(--slate-200); }
+.border-l { border-left: 1px solid var(--slate-200); }
+.border-slate-100 { border-color: var(--slate-100); }
+.border-slate-200 { border-color: var(--slate-200); }
+.border-slate-300 { border-color: var(--slate-300); }
+.border-transparent { border-color: transparent; }
+.rounded { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.font-black { font-weight: 900; }
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-slate-800 { color: var(--slate-800); }
+.text-slate-700 { color: var(--slate-700); }
+.text-slate-600 { color: var(--slate-600); }
+.text-slate-500 { color: var(--slate-500); }
+.text-slate-400 { color: var(--slate-400); }
+.text-sky-600 { color: var(--sky-600); }
+.text-emerald-600 { color: var(--emerald-650); }
+.text-rose-500 { color: var(--rose-500); }
+
+/* Cores de fundo e botões */
+.bg-white { background-color: #ffffff; }
+.bg-slate-50 { background-color: var(--slate-50); }
+.bg-slate-100 { background-color: var(--slate-100); }
+.bg-slate-200 { background-color: var(--slate-200); }
+.bg-slate-900 { background-color: var(--slate-900); }
+.bg-slate-950 { background-color: #020617; }
+.bg-sky-50 { background-color: var(--sky-50); }
+.bg-sky-600 { background-color: var(--sky-600); }
+.bg-emerald-50 { background-color: var(--emerald-50); }
+.bg-emerald-650 { background-color: var(--emerald-650); }
+.bg-rose-50 { background-color: var(--rose-50); }
+
+.hover\:bg-sky-100:hover { background-color: var(--sky-100); }
+.hover\:bg-sky-700:hover { background-color: var(--sky-700); }
+.hover\:bg-sky-750:hover { background-color: #025a87; }
+.hover\:bg-emerald-100:hover { background-color: var(--emerald-100); }
+.hover\:bg-emerald-700:hover { background-color: var(--emerald-700); }
+.hover\:bg-rose-50:hover { background-color: var(--rose-50); }
+.hover\:bg-slate-100:hover { background-color: var(--slate-100); }
+.hover\:bg-slate-200:hover { background-color: var(--slate-200); }
+.hover\:bg-slate-800:hover { background-color: var(--slate-800); }
+.hover\:text-white:hover { color: #ffffff; }
+.hover\:text-sky-600:hover { color: var(--sky-600); }
+.hover\:text-slate-800:hover { color: var(--slate-800); }
+.hover\:text-rose-600:hover { color: var(--rose-600); }
+
+/* Transições e Estilos de Input do Dashboard */
+.transition-all { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.transition-colors { transition: color 0.15s ease, background-color 0.15s ease; }
+
+input:focus, textarea:focus, select:focus {
+  background-color: #fff9cf !important;
+  box-shadow: 0 0 0 2px #f4dc6a !important;
+  border-color: #ebc334 !important;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* =====================================================
+   ESTILOS DE PÁGINA (RECIBO E RELATÓRIO)
+   Visualização "Folha A4" no Dashboard
+   ===================================================== */
+.pagina, .rel-pagina {
+  background: white;
+  color: var(--texto);
+  box-sizing: border-box;
+  text-align: left;
+  box-shadow: var(--shadow-xl);
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Folha de Recibo */
+.pagina {
+  width: 190mm;
+  padding: 6mm 10mm 7mm;
+}
+
+/* Folha de Relatório */
+.rel-pagina {
+  width: 210mm;
+  padding: 8mm 9mm 7mm;
+  font: 11px Arial, Helvetica, sans-serif !important;
+}
+
+/* Elementos Comuns às Folhas */
+.pagina table, .rel-pagina table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.pagina td, .pagina th, .rel-pagina td, .rel-pagina th {
+  border: 1px solid var(--linha);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* --- RECIBO ESTRUTURA --- */
+.recibo-cabecalho {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  width: 100%;
+  border: 1px solid var(--linha);
+}
+
+.recibo-marca {
+  padding: 9px 12px;
+  background: #f6f9fb;
+  color: var(--azul);
+}
+.recibo-marca h1 {
+  margin: 0 0 5px;
+  font-size: 19px;
+  line-height: 1.16;
+}
+.recibo-marca p {
+  margin: 0;
+  color: #3f4d59;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.recibo-dados {
+  padding: 7px 9px;
+  border-left: 1px solid var(--linha);
+}
+.recibo-linha-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.recibo-titulo {
+  color: var(--azul);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+.recibo-numero {
+  font-size: 9px;
+  font-weight: 800;
+}
+.recibo-data {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 8.5px;
+  font-weight: 700;
+}
+.recibo-fiscal {
+  margin: 4px 0;
+  font-size: 7.8px;
+  font-style: italic;
+  line-height: 1.2;
+}
+.recibo-campo-linha {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 8.5px;
+  font-weight: 700;
+}
+
+.faixa {
+  margin: 0;
+  padding: 4px 8px;
+  background: var(--azul-claro);
+  border: 1px solid var(--linha);
+  border-bottom: 0;
+  color: var(--azul);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.secao {
+  margin-top: 6px;
+}
+
+.dados-cliente {
+  font-size: 10px;
+}
+.dados-cliente td {
+  height: 28px;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+.dados-cliente .rotulo {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #344454;
+}
+.dados-cliente .rotulo-condicao {
+  font-size: 8.5px;
+}
+
+.itens {
+  font-size: 10px;
+}
+.itens th {
+  padding: 5px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  text-align: center;
+  font-size: 9px;
+}
+.itens td {
+  height: 28px;
+  padding: 3px 5px;
+}
+.itens .qtd { width: 10%; text-align: center; }
+.itens .descricao { width: 58%; }
+.itens .moeda { width: 16%; text-align: right; }
+.itens .valor-total { font-weight: 700; background: #fafcff; }
+.itens .linha-vazia td {
+  color: transparent !important;
+}
+
+.total-geral {
+  width: 43%;
+  font-size: 12px;
+}
+.total-geral td {
+  border-color: var(--azul);
+  padding: 8px;
+}
+.total-geral .rotulo-total {
+  background: var(--azul);
+  color: white;
+  font-weight: 800;
+}
+.total-geral .valor-geral {
+  font-weight: 800;
+  color: var(--azul);
+  font-size: 15px;
+}
+
+.declaracao {
+  margin: 10px 0 0;
+  border: 1px solid var(--linha);
+  padding: 8px;
+  font-size: 10px;
+  line-height: 1.55;
+  min-height: 43px;
+}
+
+.assinaturas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin-top: 32px;
+  font-size: 10px;
+  text-align: center;
+}
+.assinatura {
+  border-top: 1px solid #334454;
+  padding-top: 5px;
+  font-weight: 700;
+  color: #2b3d4f;
+}
+.assinaturas-digitais {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin-top: 11px;
+  font-size: 10px;
+}
+
+.rodape {
+  margin-top: 11px;
+  padding-top: 5px;
+  border-top: 1px solid #aab4bd;
+  text-align: center;
+  font-size: 8px;
+  color: #5d6b77;
+}
+
+/* --- RELATÓRIO ESTRUTURA --- */
+.rel-marca h1 { margin: 0 0 6px; font-size: 20px; line-height: 1.12; }
+.rel-marca p { margin: 3px 0; color: #405264; font-size: 9px; }
+.rel-titulo { text-align: right; color: #123d6a; font-size: 24px; font-weight: 800; letter-spacing: .8px; }
+.rel-data { text-align: right; font-size: 9.5px; font-weight: 700; }
+.rel-faixa { margin: 8px 0 0; padding: 5px 8px; border: 1px solid #6b7785; border-bottom: 0; background: #dcecf8; color: #123d6a; font-size: 9.5px; font-weight: 800; text-transform: uppercase; }
+.rel-table td { height: 29px; padding: 4px 6px; }
+.rel-table th { padding: 5px; background: #dcecf8; color: #123d6a; font-size: 9px; text-align: center; }
+.rel-rotulo { width: 16%; color: #344454; font-size: 9px; font-weight: 800; text-transform: uppercase; }
+.rel-medidas td { text-align: center; }
+.rel-medidas .rel-rotulo { text-align: left; }
+.rel-materiais .rel-item { width: 10%; text-align: center; }
+.rel-materiais .rel-qtd { width: 13%; text-align: center; }
+.rel-qualidade { display: flex; gap: 14px; align-items: center; min-height: 29px; }
+.rel-assinaturas { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin-top: 38px; text-align: center; font-size: 10px; font-weight: 700; color: #2b3d4f; }
+.rel-assinatura { padding-top: 0; }
+.rel-assinatura-linha { margin: 13px 0 6px; border-top: 2px solid #334454; }
+.rel-rodape { margin-top: 14px; padding-top: 6px; border-top: 1px solid #aab4bd; text-align: center; color: #5d6b77; font-size: 8px; line-height: 1.4; }
+
+/* =====================================================
+   ANIMAÇÕES CSS
+   ===================================================== */
+@keyframes slideIn {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in {
+  animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =====================================================
+   REGRAS DE IMPRESSÃO (A4 PDF)
+   Esta parte garante que o PDF seja gerado idêntico
+   ao arquivo original, escondendo o dashboard e painéis.
+   ===================================================== */
+.print-preview-holder {
+  display: none;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 8mm 8mm 6mm;
+}
+
+@media print {
+  /* Força a impressora a ignorar cores do sistema do usuário e usar as especificadas */
+  html, body {
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root {
+    display: block !important;
+    width: auto !important;
+  }
+
+  /* Esconde absolutamente todos os controles do dashboard */
+  .no-print,
+  aside,
+  main > div.no-print,
+  .print-preview-holder ~ *,
+  button,
+  nav {
+    display: none !important;
+  }
+
+  /* Mostra as folhas de visualização em tela cheia na impressão */
+  .print-preview-holder {
+    display: block !important;
+    width: 100% !important;
+    background: transparent !important;
+  }
+
+  body.print-recibo #preview-recibo-folha {
+    display: block !important;
+    width: 190mm !important;
+    max-width: 190mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body.print-relatorio #preview-relatorio-folha {
+    display: block !important;
+    width: 190mm !important;
+    max-width: 190mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Garante cores corretas ao imprimir */
+  .faixa, .itens th, .rel-faixa, .rel-table th {
+    background-color: #eaf2f8 !important;
+    color: #123d6a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .total-geral .rotulo-total {
+    background-color: #123d6a !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Impedir quebras de linha indesejadas em tabelas */
+  tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+}
